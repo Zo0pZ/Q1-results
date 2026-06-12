@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.38 57.49">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-2 {
+        stroke: #838271;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.2px;
+      }
+
+      .cls-3 {
+        stroke: #bb2031;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="57.38" height="57.49"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" width="57.38" height="57.49"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <g class="cls-5">
+        <path class="cls-2" d="M39.21,8.57C30.75.08,17.01.08,8.54,8.57.09,17.05.09,30.81,8.54,39.29c8.47,8.48,22.2,8.48,30.67,0s8.47-22.24,0-30.72Z"/>
+        <polyline class="cls-2" points="42.01 35.86 42.11 35.77 55.18 48.9 48.78 55.29 35.69 42.17 35.75 42.12"/>
+      </g>
+      <line class="cls-3" x1="34.87" y1="22.17" x2="30.74" y2="26.55"/>
+      <line class="cls-3" x1="26.42" y1="26.55" x2="21.44" y2="21.31"/>
+      <line class="cls-3" x1="17.11" y1="21.31" x2="13.02" y2="25.67"/>
+      <g class="cls-4">
+        <ellipse class="cls-3" cx="10.85" cy="27.95" rx="3.19" ry="3.1"/>
+        <ellipse class="cls-3" cx="19.28" cy="19.03" rx="3.19" ry="3.1"/>
+        <ellipse class="cls-3" cx="28.58" cy="28.83" rx="3.19" ry="3.1"/>
+        <circle class="cls-3" cx="37" cy="19.92" r="3.1"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 148.02 27.92">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #edbfc9;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 2.47px;
+      }
+
+      .cls-3 {
+        stroke: #ba2031;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="148.02" height="27.92"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g class="cls-4">
+      <polygon class="cls-3" points="13.38 4.74 17.04 11.33 24.38 12.81 19.3 18.36 20.18 25.86 13.38 22.7 6.59 25.86 7.47 18.36 2.39 12.81 9.73 11.33 13.38 4.74"/>
+      <polygon class="cls-3" points="43.7 4.74 47.35 11.33 54.69 12.81 49.61 18.36 50.49 25.86 43.7 22.7 36.9 25.86 37.78 18.36 32.7 12.81 40.04 11.33 43.7 4.74"/>
+      <polygon class="cls-3" points="74.01 4.74 77.67 11.33 85 12.81 79.93 18.36 80.8 25.86 74.01 22.7 67.22 25.86 68.09 18.36 63.02 12.81 70.35 11.33 74.01 4.74"/>
+      <polygon class="cls-3" points="104.32 4.74 107.98 11.33 115.32 12.81 110.24 18.36 111.12 25.86 104.32 22.7 97.53 25.86 98.41 18.36 93.33 12.81 100.67 11.33 104.32 4.74"/>
+      <polyline class="cls-2" points="126.87 12.16 130.98 11.33 134.64 4.74 138.29 11.33 145.63 12.81 140.55 18.36 141.43 25.86 134.64 22.7 127.84 25.86 128.03 24.24"/>
+      <polyline class="cls-3" points="128.03 24.24 128.72 18.36 123.64 12.81 126.87 12.16"/>
+    </g>
+  </g>
+</svg>
