@@ -87,19 +87,20 @@
    ANIMATION KEYFRAMES
    ============================================================ */
 @keyframes cl-slide-left {
-  from { opacity: 0; transform: translateX(-40px); }
+  /* Adjusted slightly to travel slightly further for that cinematic glide */
+  from { opacity: 0; transform: translateX(-50px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes cl-fade-up {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes cl-scale-in {
-  from { opacity: 0; transform: scale(0.72); }
+  from { opacity: 0; transform: scale(0.85); }
   to   { opacity: 1; transform: scale(1); }
 }
 @keyframes cl-slide-right {
-  from { opacity: 0; transform: translateX(24px); }
+  from { opacity: 0; transform: translateX(30px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes cl-fade-in {
@@ -111,42 +112,83 @@
   to   { transform: scaleX(1); transform-origin: left; }
 }
 
-/* ── COVER ANIMATIONS ── */
-#slide-1.active .cl-cover-heading   { animation: cl-slide-left .55s cubic-bezier(.22,.68,0,1.2) 0s both; }
-#slide-1.active .cl-logo-wrap       { animation: cl-fade-in .45s ease-out .15s both; }
-#slide-1.active .cl-cover-divider {
-    animation: cl-wipe .4s ease-out .3s both;
-    width: 90%;
-    margin: 0 auto;
+
+/* ── COVER ANIMATIONS (SLIDE 1) ── */
+#slide-1.active .cl-cover-heading { 
+  /* Swapped bouncy bezier for elegant glide, extended time to 0.75s for grand entrance */
+  animation: cl-slide-left 0.75s cubic-bezier(0.25, 1, 0.5, 1) 0s both; 
 }
-#slide-1.active .cl-cover-tagline   { animation: cl-fade-up .4s ease-out .38s both;background: #aaa28f;}
-#slide-1.active .cl-section-item:nth-child(1) { animation: cl-fade-up .38s ease-out .44s both; }
-#slide-1.active .cl-section-item:nth-child(2) { animation: cl-fade-up .38s ease-out .52s both; }
-#slide-1.active .cl-section-item:nth-child(3) { animation: cl-fade-up .38s ease-out .60s both; }
-#slide-1.active .cl-section-item:nth-child(4) { animation: cl-fade-up .38s ease-out .68s both; }
-#slide-1.active .cl-section-item:nth-child(5) { animation: cl-fade-up .38s ease-out .76s both; }
-#slide-1.active .cl-section-item:nth-child(6) { animation: cl-fade-up .38s ease-out .84s both; }
-#slide-1.active .cl-cover-nav-row   { animation: cl-fade-in .35s ease-out .90s both; }
+#slide-1.active .cl-logo-wrap { 
+  animation: cl-fade-in 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.15s both; 
+}
+#slide-1.active .cl-cover-divider {
+  /* Smoothed out the line wipe to build gracefully under the heading */
+  animation: cl-wipe 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.25s both;
+  width: 90%;
+  margin: 0 auto;
+}
+#slide-1.active .cl-cover-tagline { 
+  animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.3s both;
+  background: #aaa28f;
+}
+
+/* Staggered list: 0.6s duration with a tight, rhythmic 0.08s delay sequence */
+#slide-1.active .cl-section-item:nth-child(1) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.38s both; }
+#slide-1.active .cl-section-item:nth-child(2) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.46s both; }
+#slide-1.active .cl-section-item:nth-child(3) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.54s both; }
+#slide-1.active .cl-section-item:nth-child(4) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.62s both; }
+#slide-1.active .cl-section-item:nth-child(5) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.70s both; }
+#slide-1.active .cl-section-item:nth-child(6) { animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.78s both; }
+
+#slide-1.active .cl-cover-nav-row { 
+  animation: cl-fade-in 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.86s both; 
+}
+
 
 /* ── CONTENT SLIDE ANIMATIONS ── */
-.cl-slide.active .cl-nav-bar        { animation: cl-fade-in .3s ease-out 0s both; }
-.cl-slide.active .cl-slide-title    { animation: cl-slide-left .50s cubic-bezier(.22,.68,0,1.15) .05s both; }
-.cl-slide.active .cl-corner-icon    { animation: cl-scale-in .4s cubic-bezier(.34,1.56,.64,1) .18s both; }
-.cl-slide.active .cl-panel-card     { animation: cl-slide-right .45s ease-out .08s both; }
-.cl-slide.active .cl-item:nth-child(1)  { animation: cl-fade-up .36s ease-out .18s both; }
-.cl-slide.active .cl-item:nth-child(2)  { animation: cl-fade-up .36s ease-out .26s both; }
-.cl-slide.active .cl-item:nth-child(3)  { animation: cl-fade-up .36s ease-out .34s both; }
-.cl-slide.active .cl-item:nth-child(4)  { animation: cl-fade-up .36s ease-out .42s both; }
-.cl-slide.active .cl-item:nth-child(5)  { animation: cl-fade-up .36s ease-out .50s both; }
-.cl-slide.active .cl-item:nth-child(6)  { animation: cl-fade-up .36s ease-out .58s both; }
-.cl-slide.active .cl-item:nth-child(7)  { animation: cl-fade-up .36s ease-out .66s both; }
-.cl-slide.active .cl-item:nth-child(8)  { animation: cl-fade-up .36s ease-out .74s both; }
-.cl-slide.active .cl-item:nth-child(9)  { animation: cl-fade-up .36s ease-out .82s both; }
-.cl-slide.active .cl-item:nth-child(10) { animation: cl-fade-up .36s ease-out .90s both; }
-#slide-9.active .cl-closing-heading { animation: cl-slide-left .6s cubic-bezier(.22,.68,0,1.15) .05s both;color: #a32c32; }
-#slide-9.active .cl-closing-divider { animation: cl-wipe .4s ease-out .35s both; }
-#slide-9.active .cl-closing-tagline { animation: cl-fade-up .4s ease-out .5s both; }
-#slide-9.active .cl-closing-right   { animation: cl-fade-in .45s ease-out .3s both; }
+.cl-slide.active .cl-nav-bar { 
+  animation: cl-fade-in 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0s both; 
+}
+.cl-slide.active .cl-slide-title {
+  animation: cl-slide-left 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.1s both;
+}
+.cl-slide.active .cl-corner-icon { 
+  /* Swapped bouncy scale-in for a smooth, high-end swell */
+  animation: cl-scale-in 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.15s both; 
+}
+.cl-slide.active .cl-panel-card { 
+  /* Large card container enters with deliberate weight */
+  animation: cl-slide-right 0.75s cubic-bezier(0.25, 1, 0.5, 1) 0.05s both; 
+}
+
+/* Staggered content items: Smooth 0.55s duration with an elegant 0.06s waterfall interval */
+.cl-slide.active .cl-item:nth-child(1)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.20s both; }
+.cl-slide.active .cl-item:nth-child(2)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.26s both; }
+.cl-slide.active .cl-item:nth-child(3)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.32s both; }
+.cl-slide.active .cl-item:nth-child(4)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.38s both; }
+.cl-slide.active .cl-item:nth-child(5)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.44s both; }
+.cl-slide.active .cl-item:nth-child(6)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.50s both; }
+.cl-slide.active .cl-item:nth-child(7)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.56s both; }
+.cl-slide.active .cl-item:nth-child(8)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.62s both; }
+.cl-slide.active .cl-item:nth-child(9)  { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.68s both; }
+.cl-slide.active .cl-item:nth-child(10) { animation: cl-fade-up 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.74s both; }
+
+
+/* ── CLOSING SLIDE ANIMATIONS (SLIDE 9) ── */
+#slide-9.active .cl-closing-heading { 
+  /* Cleared bounce, matched main cover slide velocity */
+  animation: cl-slide-left 0.75s cubic-bezier(0.25, 1, 0.5, 1) 0.05s both; 
+  color: #a32c32; 
+}
+#slide-9.active .cl-closing-divider { 
+  animation: cl-wipe 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.25s both; 
+}
+#slide-9.active .cl-closing-tagline { 
+  animation: cl-fade-up 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.4s both; 
+}
+#slide-9.active .cl-closing-right { 
+  animation: cl-fade-in 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.3s both; 
+}
 
 /* ============================================================
    SLIDE 1 – COVER
@@ -169,7 +211,7 @@ div#slide-1 {
 .cl-cover-heading {
   font-family: 'Calibre', sans-serif;
   font-weight: 900;
-  font-size: 98px;
+  font-size: 130px;
   line-height: .88;
   color: var(--cl-red);
   text-transform: uppercase;
