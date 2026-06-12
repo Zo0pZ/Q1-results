@@ -78,6 +78,11 @@
 #slide-3 .cl-slide-right { overflow: visible; }
 #slide-3 .cl-panel-card { flex: 0 0 auto; min-height: 200px; }
 
+/* Slide 8 has 10 items (4 rows) — tighten spacing to prevent last row clipping */
+#slide-8 .cl-slide-title { font-size: 50px; margin-bottom: 14px; }
+#slide-8 .cl-item { padding: 6px 5px; }
+#slide-8 .cl-item-label { font-size: 1.5rem; }
+
 /* ============================================================
    ANIMATION KEYFRAMES
    ============================================================ */
@@ -341,8 +346,8 @@ img.right-icon {
   flex-shrink: 0;
 }
 .cl-corner-icon img {
-  width: 88px;
-  height: 88px;
+  width: 91px;
+  height: 91px;
   object-fit: contain;
   display: block;
 }
@@ -401,7 +406,7 @@ img.right-icon {
 .cl-items-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px 18px;
+  gap: 5px 0;
   align-content: start;
 }
 .cl-items-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
@@ -729,38 +734,39 @@ img.right-icon {
           <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
           <div class="cl-item-text"><div class="cl-item-metric">£10m</div><span class="cl-item-label">Group Protection</span><span class="cl-item-sub">-30% vs Q1 2025</span></div>
         </div>
-                    <div class="cl-item cl-item-link" data-go="4">
-        <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
-        <div class="cl-item-text"><span class="cl-item-label">Click here to see how we're delivering against our Strategic Pillars</span></div>
-      </div>
+        
       </div>
     </div>
     <div class="cl-slide-right">
       <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_6.svg" alt=""></div>
       <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-3-inner"></div></div>
-
+        <div class="cl-item cl-item-link" data-go="4">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><span class="cl-item-label">Click here to see how we're delivering against our Strategic Pillars</span></div>
+      </div>
     </div>
   </div>
   <div class="cl-panel-data" data-panel="biz-ia">
-    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <img class="right-icon" src="Q1 2026 Results_files\Asset 70.svg" alt="">
     <p class="cl-panel-text">Strong case flow and positive momentum continued from Q4 2025. A strong January reflected focused action to recover the new business servicing position, resulting in pipeline being cleared and <strong>strengthening issued business</strong>.</p>
   </div>
   <div class="cl-panel-data" data-panel="biz-hf">
-    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <img class="right-icon" src="Q1 2026 Results_files\Asset 71.svg" alt="">
     <p class="cl-panel-text">Slower completions in January reflecting lower application volumes in Q4 2025, however volumes improved following rate changes. Sales are expected to increase in Q2, supported by <strong>further rate changes and the launch of Advantage</strong>.</p>
   </div>
   <div class="cl-panel-data" data-panel="biz-ba">
-    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <img class="right-icon" src="Q1 2026 Results_files\Asset 72.svg" alt="">
     <p class="cl-panel-text">Although volumes were broadly consistent with Q1 2025, deal timing is volatile and the whole market reflected a slower start to the year. There is currently a <strong>healthy pipeline for higher Q2 and Q3 volumes</strong>.</p>
   </div>
   <div class="cl-panel-data" data-panel="biz-wealth">
-    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <img class="right-icon" src="Q1 2026 Results_files\Asset 73.svg" alt="">
     <p class="cl-panel-text">Strong performance highlights continued demand for our international products, although not at the record levels seen in Q1 2025. A <strong>strong pipeline is in place heading into Q2</strong>.</p>
   </div>
   <div class="cl-panel-data" data-panel="biz-gp">
-    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <img class="right-icon" src="Q1 2026 Results_files\Asset 74.svg" alt="">
     <p class="cl-panel-text">The low new business volumes written in January have been partially offset by above plan results in February and March. <strong>Increased quote activity in Q1 has led to a strong sales pipeline for Q2</strong>.</p>
   </div>
+
 </div>
 
 
@@ -790,28 +796,28 @@ img.right-icon {
       </div>
     </div>
     <div class="cl-slide-right">
-      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_1.svg" alt=""></div>
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_1.svg" alt=""></div>
       <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-4-inner"></div></div>
     </div>
   </div>
   <div class="cl-panel-data" data-panel="cust-nps">
-    <div class="cl-panel-metric">+50 <span style="font-size:18px;font-family:'Calibre',sans-serif;font-weight:700;color:var(--cl-muted)">NPS</span></div>
+    <div class="cl-panel-metric"><img class="right-icon" src="Q1 2026 Results_files\Asset 75.svg" alt=""></div>
     <p class="cl-panel-text">Strong customer advocacy with NPS of <strong>+50</strong> across Retirement and Group Protection (as at 1 May 2026).</p>
   </div>
   <div class="cl-panel-data" data-panel="cust-tp">
-    <div class="cl-stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="none" stroke="#7B1D2E" stroke-width="1.2"/></svg></div>
+    <div class="cl-stars"><img class="right-icon" src="Q1 2026 Results_files\Asset 76.svg" alt=""></div>
     <p class="cl-panel-text">Trusted by customers, maintaining a <strong>4.2 Trustpilot rating</strong> (as at 31 March 2026).</p>
   </div>
-  <div class="cl-panel-data" data-panel="cust-cdi">
+  <div class="cl-panel-data" data-panel="cust-cdi"><img class="right-icon" src="Q1 2026 Results_files\Asset 77.svg" alt="">
     <p class="cl-panel-text">CLUK ranked <strong>16th out of 45</strong> in the latest <strong>Consumer Duty Index</strong>, an improvement of <strong>11 places</strong> and increasing our score by <strong>+4</strong>.</p>
   </div>
-  <div class="cl-panel-data" data-panel="cust-ir">
+  <div class="cl-panel-data" data-panel="cust-ir"><img class="right-icon" src="Q1 2026 Results_files\Asset 78.svg" alt="">
     <p class="cl-panel-text">Named <strong>Best Lifetime Mortgage Provider</strong> at the British Later Life Lending Awards 2026 and awarded <strong>5-star Defaqto rating</strong> for our international bond account.</p>
   </div>
-  <div class="cl-panel-data" data-panel="cust-wc">
+  <div class="cl-panel-data" data-panel="cust-wc"><img class="right-icon" src="Q1 2026 Results_files\Asset 80.svg" alt="">
     <p class="cl-panel-text">Launched <strong>WeCare</strong> to provide holistic support for our BPA policyholders.</p>
   </div>
-  <div class="cl-panel-data" data-panel="cust-ce">
+  <div class="cl-panel-data" data-panel="cust-ce"><img class="right-icon" src="Q1 2026 Results_files\Asset 79.svg" alt="">
     <p class="cl-panel-text">Customer first enhancements including <strong>integrated bank validation</strong> for annuity and FTIP applications, automated payment safeguards where customers may be deceased, and enhanced product flexibility at set up for Discounted Gift Trust deeds.</p>
   </div>
 </div>
@@ -841,14 +847,14 @@ img.right-icon {
       </div>
     </div>
     <div class="cl-slide-right">
-      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_2.svg" alt=""></div>
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_2.svg" alt=""></div>
       <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-5-inner"></div></div>
     </div>
   </div>
-  <div class="cl-panel-data" data-panel="sg-buyout"><p class="cl-panel-text"><strong>Completed buy-out of 1 scheme</strong>, securing future benefits for members and progressing onboarding of other buy-out schemes.</p></div>
-  <div class="cl-panel-data" data-panel="sg-advantage"><p class="cl-panel-text"><strong>Advantage launch</strong> – introduced a new lifetime mortgage option offering greater flexibility, clarity and control for customers.</p></div>
-  <div class="cl-panel-data" data-panel="sg-reinsurance"><p class="cl-panel-text"><strong>Reinsured longevity risk</strong> with a new reinsurance partner. Expanding our panel of reinsurers to support the capital and risk management of a growing book of BPA business.</p></div>
-  <div class="cl-panel-data" data-panel="sg-bpa"><p class="cl-panel-text"><strong>BPA Acceleration team</strong> has successfully delivered phase one of planned upgrades to our <strong>BPA web pages</strong>.</p></div>
+  <div class="cl-panel-data" data-panel="sg-buyout"><img class="right-icon" src="Q1 2026 Results_files\Buy_out.svg" alt=""><p class="cl-panel-text"><strong>Completed buy-out of 1 scheme</strong>, securing future benefits for members and progressing onboarding of other buy-out schemes.</p></div>
+  <div class="cl-panel-data" data-panel="sg-advantage"><img class="right-icon" src="Q1 2026 Results_files\Advantage.svg" alt=""><p class="cl-panel-text"><strong>Advantage launch</strong> – introduced a new lifetime mortgage option offering greater flexibility, clarity and control for customers.</p></div>
+  <div class="cl-panel-data" data-panel="sg-reinsurance"><img class="right-icon" src="Q1 2026 Results_files\Reinsurance.svg" alt=""><p class="cl-panel-text"><strong>Reinsured longevity risk</strong> with a new reinsurance partner. Expanding our panel of reinsurers to support the capital and risk management of a growing book of BPA business.</p></div>
+  <div class="cl-panel-data" data-panel="sg-bpa"><img class="right-icon" src="Q1 2026 Results_files\Legacy_tech.svg" alt=""><p class="cl-panel-text"><strong>BPA Acceleration team</strong> has successfully delivered phase one of planned upgrades to our <strong>BPA web pages</strong>.</p></div>
 </div>
 
 
@@ -875,13 +881,13 @@ img.right-icon {
       </div>
     </div>
     <div class="cl-slide-right">
-      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_3.svg" alt=""></div>
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_3.svg" alt=""></div>
       <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-6-inner"></div></div>
     </div>
   </div>
-  <div class="cl-panel-data" data-panel="oe-hk"><p class="cl-panel-text">Completed the transfer of a <strong>c.220 policy Hong Kong portfolio</strong>, removing ongoing regulatory and operational complexity.</p></div>
-  <div class="cl-panel-data" data-panel="oe-sys"><p class="cl-panel-text"><strong>Implemented system changes</strong> and updated legal entity address on all customer documents to support change of registered address.</p></div>
-  <div class="cl-panel-data" data-panel="oe-act"><p class="cl-panel-text">Deployed a new <strong>Actuarial ER Model</strong> that can simulate upwards of <strong>10,000 economic scenarios</strong> over 100 years.</p></div>
+  <div class="cl-panel-data" data-panel="oe-hk"><img class="right-icon" src="Q1 2026 Results_files\Dagger.svg" alt=""><p class="cl-panel-text">Completed the transfer of a <strong>c.220 policy Hong Kong portfolio</strong>, removing ongoing regulatory and operational complexity.</p></div>
+  <div class="cl-panel-data" data-panel="oe-sys"><img class="right-icon" src="Q1 2026 Results_files\Address_change.svg" alt=""><p class="cl-panel-text"><strong>Implemented system changes</strong> and updated legal entity address on all customer documents to support change of registered address.</p></div>
+  <div class="cl-panel-data" data-panel="oe-act"><img class="right-icon" src="Q1 2026 Results_files\Actuarial.svg" alt=""><p class="cl-panel-text">Deployed a new <strong>Actuarial ER Model</strong> that can simulate upwards of <strong>10,000 economic scenarios</strong> over 100 years.</p></div>
 </div>
 
 
@@ -925,10 +931,10 @@ img.right-icon {
       <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-7-inner"></div></div>
     </div>
   </div>
-  <div class="cl-panel-data" data-panel="dig-online"><p class="cl-panel-text">Launched new online application journeys for <strong>Premiere</strong> and <strong>Premiere Europe</strong> accounts, reducing cycle times by an average <strong>50%</strong>.</p></div>
-  <div class="cl-panel-data" data-panel="dig-legacy"><p class="cl-panel-text"><strong>Decommissioned DB2 legacy technology</strong> and Java apps on Adviser Connect, improving performance and customer experience.</p></div>
-  <div class="cl-panel-data" data-panel="dig-data"><p class="cl-panel-text">Completed the <strong>unstructured data clean-up project</strong>, delivering improved data quality and readiness.</p></div>
-  <div class="cl-panel-data" data-panel="dig-ai"><p class="cl-panel-text"><strong>Embedded AI at scale</strong>, with 800+ colleagues now using <strong>AI4All</strong> and more to come in Q2.</p></div>
+  <div class="cl-panel-data" data-panel="dig-online"><img class="right-icon" src="Q1 2026 Results_files\Online_app.svg" alt=""><p class="cl-panel-text">Launched new online application journeys for <strong>Premiere</strong> and <strong>Premiere Europe</strong> accounts, reducing cycle times by an average <strong>50%</strong>.</p></div>
+  <div class="cl-panel-data" data-panel="dig-legacy"><img class="right-icon" src="Q1 2026 Results_files\Legacy_tech.svg" alt=""><p class="cl-panel-text"><strong>Decommissioned DB2 legacy technology</strong> and Java apps on Adviser Connect, improving performance and customer experience.</p></div>
+  <div class="cl-panel-data" data-panel="dig-data"><img class="right-icon" src="Q1 2026 Results_files\Data_clean.svg" alt=""><p class="cl-panel-text">Completed the <strong>unstructured data clean-up project</strong>, delivering improved data quality and readiness.</p></div>
+  <div class="cl-panel-data" data-panel="dig-ai"><img class="right-icon" src="Q1 2026 Results_files\AI_for_all.svg" alt=""><p class="cl-panel-text"><strong>Embedded AI at scale</strong>, with 800+ colleagues now using <strong>AI4All</strong> and more to come in Q2.</p></div>
 </div>
 
 
