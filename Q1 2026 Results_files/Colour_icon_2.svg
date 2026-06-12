@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 79.65 80.92">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #bd7cb5;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 3.25px;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-3 {
+        stroke: #3c4270;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" y="0" width="79.65" height="80.92"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g class="cls-4">
+      <path class="cls-3" d="M20.01,28.2c0,3.12-2.53,6.43-5.65,6.43s-5.65-3.3-5.65-6.43,0-6.44,5.65-6.44,5.65,3.32,5.65,6.44Z"/>
+      <path class="cls-3" d="M45.48,18.11c0,3.12-2.53,6.43-5.65,6.43s-5.65-3.3-5.65-6.43,0-6.44,5.65-6.44,5.65,3.32,5.65,6.44Z"/>
+      <path class="cls-3" d="M52.56,36.72v-4.34c0-4.55-4.88-7.84-12.86-7.84s-12.61,3.3-12.61,7.84v9.96"/>
+      <path class="cls-3" d="M70.95,8.07c0,3.12-2.53,6.43-5.65,6.43s-5.65-3.3-5.65-6.43,0-6.44,5.65-6.44,5.65,3.32,5.65,6.44Z"/>
+      <path class="cls-3" d="M78.03,25.28v-2.94c0-4.55-4.88-7.84-12.86-7.84s-12.61,3.3-12.61,7.84v9.96"/>
+      <polyline class="cls-2" points="1.63 80.92 1.63 64.88 13.96 64.88 13.96 80.92"/>
+      <polyline class="cls-2" points="22.98 80.92 22.98 61.57 35.32 61.57 35.32 80.92"/>
+      <polyline class="cls-2" points="44.34 80.92 44.34 55.39 56.67 55.39 56.67 80.92"/>
+      <polyline class="cls-2" points="65.69 80.92 65.69 46.16 78.03 46.16 78.03 80.92"/>
+      <path class="cls-3" d="M78.03,30S48.84,57.62,1.63,57.62v-15.15c0-4.55,4.88-7.84,12.61-7.84s12.86,3.3,12.86,7.84v5.83"/>
+      <polyline class="cls-3" points="67.22 29.43 78.03 29.43 78.03 40.24"/>
+    </g>
+  </g>
+</svg>

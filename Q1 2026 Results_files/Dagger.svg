@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.88 52.66">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #ba2031;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke: #838271;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <polyline class="cls-1" points="21.52 43.92 14.34 43.92 14.34 48.02 5.05 39.19 14.34 30.36 14.34 34.46 21.52 34.46"/>
+      <g>
+        <g>
+          <ellipse class="cls-2" cx="36.4" cy="34.93" rx="3.92" ry="4.22"/>
+          <path class="cls-2" d="M44.86,48.35v-2.14c0-2.4-1.95-4.35-4.36-4.35h-8.23c-2.41,0-4.36,1.95-4.36,4.35v2.14"/>
+        </g>
+        <ellipse class="cls-2" cx="36.38" cy="39.19" rx="12.49" ry="12.47"/>
+      </g>
+      <polyline class="cls-1" points="28.36 18.2 35.54 18.2 35.54 22.3 44.83 13.47 35.54 4.64 35.54 8.74 28.36 8.74"/>
+      <g>
+        <g>
+          <path class="cls-2" d="M9.56,9.21c0,2.33,1.75,4.22,3.92,4.22s3.92-1.89,3.92-4.22-1.75-4.22-3.92-4.22-3.92,1.89-3.92,4.22Z"/>
+          <path class="cls-2" d="M5.02,22.63v-2.14c0-2.4,1.95-4.35,4.36-4.35h8.23c2.41,0,4.36,1.95,4.36,4.35v2.14"/>
+        </g>
+        <ellipse class="cls-2" cx="13.49" cy="13.47" rx="12.49" ry="12.47"/>
+      </g>
+    </g>
+  </g>
+</svg>

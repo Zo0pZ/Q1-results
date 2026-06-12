@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 88.11 88.11">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #0e4774;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.76px;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-3 {
+        stroke: #1cbcee;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="88.11" height="88.11"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" width="88.11" height="88.11"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" width="88.11" height="88.11"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" width="88.11" height="88.11"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <rect class="cls-2" x="23.05" y="23.05" width="42" height="42"/>
+      <line class="cls-3" x1="54.67" y1="54.4" x2="54.67" y2="33.7"/>
+      <polyline class="cls-3" points="31.73 54.4 38.98 33.91 40.65 33.91 47.07 54.4"/>
+      <line class="cls-3" x1="44.67" y1="46.74" x2="34.45" y2="46.74"/>
+      <line class="cls-2" x1="44.05" y1="65.47" x2="44.05" y2="77.85"/>
+      <g class="cls-7">
+        <circle class="cls-3" cx="44.05" cy="82.29" r="4.44"/>
+      </g>
+      <polyline class="cls-2" points="36.1 65.47 36.1 72.62 29.53 79.19"/>
+      <polyline class="cls-2" points="52 65.47 52 72.62 58.57 79.19"/>
+      <line class="cls-2" x1="44.05" y1="22.63" x2="44.05" y2="10.25"/>
+      <g class="cls-4">
+        <circle class="cls-3" cx="44.05" cy="5.82" r="4.44"/>
+      </g>
+      <polyline class="cls-2" points="29.53 8.92 36.1 15.48 36.1 22.63"/>
+      <polyline class="cls-2" points="58.57 8.92 52 15.48 52 22.63"/>
+      <line class="cls-2" x1="22.63" y1="44.05" x2="10.25" y2="44.05"/>
+      <g class="cls-6">
+        <circle class="cls-3" cx="5.82" cy="44.05" r="4.44"/>
+      </g>
+      <polyline class="cls-2" points="22.63 36.1 15.48 36.1 8.92 29.53"/>
+      <polyline class="cls-2" points="22.63 52 15.48 52 8.92 58.57"/>
+      <line class="cls-2" x1="65.47" y1="44.05" x2="77.85" y2="44.05"/>
+      <g class="cls-5">
+        <circle class="cls-3" cx="82.29" cy="44.05" r="4.44"/>
+      </g>
+      <polyline class="cls-2" points="79.19 29.53 72.62 36.1 65.47 36.1"/>
+      <polyline class="cls-2" points="79.19 58.57 72.62 52 65.47 52"/>
+    </g>
+  </g>
+</svg>
