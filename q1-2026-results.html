@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canada Life UK – Q1 2026 Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CANADA LIFE Q1 2026 RESULTS
+   Fixed design canvas: 1280 × 720 px (16:9)
+   Scaled to container width via JS transform.
+   All sizing values are at the 1280×720 base resolution.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── OUTER WRAPPER – height driven by JS so variable-height slides work ── */
+#cl-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,.2);
+}
+
+/* ── INNER CANVAS – fixed width, auto height so slides can exceed 720px ── */
+#cl-infographic {
+  font-family: 'Barlow', sans-serif;
+  width: 1280px;
+  min-height: 720px;
+  transform-origin: top left;
+  background: #fff;
+  overflow: hidden;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ============================================================
+   COLOURS & TOKENS
+   ============================================================ */
+:root {
+  --cl-red:    #7B1D2E;
+  --cl-teal:   #78bdad;
+  --cl-purple: #b799b4;
+  --cl-olive:  #afcf44;
+  --cl-blue:   #69b7f0;
+  --cl-gold:   #e7cc30;
+  --cl-beige:  #c2bdae;;
+  --cl-tan:    #c2bdae;
+  --cl-body:   #828272;
+  --cl-muted:  #948988;
+  --cl-panel:  #EBEBEA;
+  --cl-border: rgba(255,255,255,0.25);
+}
+
+/* ============================================================
+   SLIDES
+   ============================================================ */
+.cl-slide { display: none; width: 1280px; height: 720px; overflow: hidden; }
+.cl-slide.active { display: flex; flex-direction: column; }
+
+/* Slide 3 is allowed to grow beyond 720px */
+#slide-3 { height: auto; min-height: 720px; overflow: visible; }
+#slide-3 .cl-slide-body { height: auto; overflow: visible; }
+#slide-3 .cl-slide-left { overflow: visible; }
+#slide-3 .cl-slide-right { overflow: visible; }
+#slide-3 .cl-panel-card { flex: 0 0 auto; min-height: 200px; }
+
+/* ============================================================
+   ANIMATION KEYFRAMES
+   ============================================================ */
+@keyframes cl-slide-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes cl-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cl-scale-in {
+  from { opacity: 0; transform: scale(0.72); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes cl-slide-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes cl-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes cl-wipe {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ── COVER ANIMATIONS ── */
+#slide-1.active .cl-cover-heading   { animation: cl-slide-left .55s cubic-bezier(.22,.68,0,1.2) 0s both; }
+#slide-1.active .cl-logo-wrap       { animation: cl-fade-in .45s ease-out .15s both; }
+#slide-1.active .cl-cover-divider {
+    animation: cl-wipe .4s ease-out .3s both;
+    width: 90%;
+    margin: 0 auto;
+}
+#slide-1.active .cl-cover-tagline   { animation: cl-fade-up .4s ease-out .38s both;background: #aaa28f;}
+#slide-1.active .cl-section-item:nth-child(1) { animation: cl-fade-up .38s ease-out .44s both; }
+#slide-1.active .cl-section-item:nth-child(2) { animation: cl-fade-up .38s ease-out .52s both; }
+#slide-1.active .cl-section-item:nth-child(3) { animation: cl-fade-up .38s ease-out .60s both; }
+#slide-1.active .cl-section-item:nth-child(4) { animation: cl-fade-up .38s ease-out .68s both; }
+#slide-1.active .cl-section-item:nth-child(5) { animation: cl-fade-up .38s ease-out .76s both; }
+#slide-1.active .cl-section-item:nth-child(6) { animation: cl-fade-up .38s ease-out .84s both; }
+#slide-1.active .cl-cover-nav-row   { animation: cl-fade-in .35s ease-out .90s both; }
+
+/* ── CONTENT SLIDE ANIMATIONS ── */
+.cl-slide.active .cl-nav-bar        { animation: cl-fade-in .3s ease-out 0s both; }
+.cl-slide.active .cl-slide-title    { animation: cl-slide-left .50s cubic-bezier(.22,.68,0,1.15) .05s both; }
+.cl-slide.active .cl-corner-icon    { animation: cl-scale-in .4s cubic-bezier(.34,1.56,.64,1) .18s both; }
+.cl-slide.active .cl-panel-card     { animation: cl-slide-right .45s ease-out .08s both; }
+.cl-slide.active .cl-item:nth-child(1)  { animation: cl-fade-up .36s ease-out .18s both; }
+.cl-slide.active .cl-item:nth-child(2)  { animation: cl-fade-up .36s ease-out .26s both; }
+.cl-slide.active .cl-item:nth-child(3)  { animation: cl-fade-up .36s ease-out .34s both; }
+.cl-slide.active .cl-item:nth-child(4)  { animation: cl-fade-up .36s ease-out .42s both; }
+.cl-slide.active .cl-item:nth-child(5)  { animation: cl-fade-up .36s ease-out .50s both; }
+.cl-slide.active .cl-item:nth-child(6)  { animation: cl-fade-up .36s ease-out .58s both; }
+.cl-slide.active .cl-item:nth-child(7)  { animation: cl-fade-up .36s ease-out .66s both; }
+.cl-slide.active .cl-item:nth-child(8)  { animation: cl-fade-up .36s ease-out .74s both; }
+.cl-slide.active .cl-item:nth-child(9)  { animation: cl-fade-up .36s ease-out .82s both; }
+.cl-slide.active .cl-item:nth-child(10) { animation: cl-fade-up .36s ease-out .90s both; }
+#slide-9.active .cl-closing-heading { animation: cl-slide-left .6s cubic-bezier(.22,.68,0,1.15) .05s both;color: #a32c32; }
+#slide-9.active .cl-closing-divider { animation: cl-wipe .4s ease-out .35s both; }
+#slide-9.active .cl-closing-tagline { animation: cl-fade-up .4s ease-out .5s both; }
+#slide-9.active .cl-closing-right   { animation: cl-fade-in .45s ease-out .3s both; }
+
+/* ============================================================
+   SLIDE 1 – COVER
+   ============================================================ */
+div#slide-1 {
+  background: #c0beaf;
+}
+.cl-closing-heading{
+    color: #a32c32;
+}
+.cl-cover-top {
+  height: 264px;
+  padding: 44px 60px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--cl-beige);
+  flex-shrink: 0;
+}
+.cl-cover-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 98px;
+  line-height: .88;
+  color: var(--cl-red);
+  text-transform: uppercase;
+}
+span.light-red {
+    color: #a32c32;
+}
+.light-red {
+    color: #a32c32;
+}
+img.right-icon {
+    width: 80px;
+}
+.cl-logo-wrap img { display: block; width: 240px; }
+.cl-cover-divider {
+  height: 2px;
+  background: rgb(255 255 255);
+  flex-shrink: 0;
+}
+.cl-cover-bottom {
+  background: var(--cl-tan);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  position: relative;
+}
+.cl-cover-tagline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  padding: 18px 24px 10px;
+}
+.cl-section-nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex: 1;
+  background: #aaa28f;
+  padding-top: 1rem;
+}
+.cl-section-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px 30px;
+  border-right: 2px solid rgb(255 255 255);
+  cursor: pointer;
+  transition: background .2s;
+  text-align: center;
+  gap: 8px;
+}
+.cl-section-item:last-child { border-right: none; }
+.cl-section-item:hover { background: rgba(255,255,255,.12); }
+.cl-section-icon img { width: 78px; height: 78px; display: block; }
+.cl-section-arrow img { width: 40px; height: 40px; display: block; }
+.cl-section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1.35em;
+    color: #51534a;
+    text-transform: uppercase;
+}
+.cl-cover-footer {
+  height: 50px;
+  background: var(--cl-beige);
+  flex-shrink: 0;
+}
+.cl-cover-nav-row {
+  position: absolute;
+  bottom: 8px;
+  right: 20px;
+}
+
+/* ============================================================
+   NAV BAR (slides 2–8)
+   ============================================================ */
+.cl-nav-bar {
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30px;
+  border-bottom: 1.5px solid #e5e1dc;
+  background: #fff;
+  gap: 14px;
+}
+.cl-nav-breadcrumb {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+  color: var(--cl-body);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cl-nav-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+  color: var(--cl-muted);
+  text-transform: uppercase;
+}
+.cl-nav-hint img { width: 22px; height: 22px; flex-shrink: 0; }
+.cl-nav-controls { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.cl-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: opacity .18s, transform .12s;
+}
+.cl-nav-btn:hover { opacity: .7; transform: scale(1.08); }
+.cl-nav-btn img { width: 40px; height: 40px; display: block; }
+.cl-nav-btn.back img { transform: scaleX(-1); }
+
+/* ============================================================
+   SLIDE BODY (2-column)
+   Left: 62%  Right: 38%
+   ============================================================ */
+.cl-slide-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 62% 38%;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* ── LEFT COLUMN ── */
+.cl-slide-left {
+  padding: 32px 20px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cl-slide-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: .90;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+/* ── RIGHT COLUMN ── */
+.cl-slide-right {
+  padding: 20px 50px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ── CORNER ICON (no circle, just the SVG) ── */
+.cl-corner-icon {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cl-corner-icon img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── PANEL CARD ── */
+.cl-panel-card {
+  width: 100%;
+  flex: 1;
+  background: var(--cl-panel);
+  border-radius: 8px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+.cl-panel-inner {
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity .22s, transform .22s;
+}
+.cl-panel-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cl-panel-metric {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  color: var(--cl-red);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cl-panel-text {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.62;
+  color: var(--cl-body);
+}
+.cl-panel-text strong { color: #3a3030; }
+.cl-panel-footnote {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  color: var(--cl-muted);
+  margin-top: 10px;
+  line-height: 1.4;
+  font-style: italic;
+}
+/* stars */
+.cl-stars { display: flex; gap: 3px; margin-bottom: 10px; }
+.cl-stars svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   ITEMS GRID
+   ============================================================ */
+.cl-items-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px 18px;
+  align-content: start;
+}
+.cl-items-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.cl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background .15s;
+}
+.cl-item:hover { background: #fff; }
+.cl-item:has(.cl-item-btn) {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* play button toggle */
+.cl-item-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 33px;
+  position: relative;
+}
+.cl-item-btn img {
+  position: absolute;
+  top: 10px; left: 0;
+  width: 32px; height: 32px;
+  display: block;
+  transition: opacity .15s;
+}
+.cl-item-btn .btn-click { opacity: 0; }
+.cl-item:hover .btn-click, .cl-item.active .btn-click { opacity: 1; }
+.cl-item:hover .btn-hover, .cl-item.active .btn-hover  { opacity: 0; }
+
+/* illustrated item icon (slides 7-8) */
+.cl-item-illus {
+  flex-shrink: 0;
+  width: 38px;
+  display: flex;
+  align-items: center;
+}
+.cl-item-illus img { width: 34px; height: auto; display: block; }
+
+.cl-item-text { flex: 1; min-width: 0; }
+.cl-item-metric {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--cl-body);
+}
+.cl-item-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  color: var(--cl-body);
+  line-height: 1.2;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.cl-item-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--cl-body);
+  display: block;
+}
+.cl-item:hover .cl-item-metric,
+.cl-item:hover .cl-item-label,
+.cl-item:hover .cl-item-sub,
+.cl-item.active .cl-item-metric,
+.cl-item.active .cl-item-label,
+.cl-item.active .cl-item-sub {
+  color: #903934;
+  border-color: currentColor;
+}
+.cl-item-link { margin-top: 10px; width: 100%; }
+.cl-item-link .cl-item-label { font-size: 1.35; color: var(--cl-body); }
+.cl-item-link:hover .cl-item-label { color: var(--cl-red); }
+
+/* ============================================================
+   SLIDE 9 – CLOSING
+   ============================================================ */
+.cl-closing {
+  flex: 1;
+  background: var(--cl-red);
+  padding: 56px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cl-closing-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 96px;
+  line-height: .86;
+  text-transform: uppercase;
+  color: rgba(123,29,46,.4);
+  margin-bottom: 22px;
+}
+.cl-closing-divider {
+  height: 2px;
+  background: rgba(255,255,255,.28);
+  margin-bottom: 26px;
+  width: 460px;
+}
+.cl-closing-tagline {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.35;
+  max-width: 460px;
+}
+.cl-closing-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 22px;
+}
+.cl-closing-right img.cl-logo {
+  width: 160px;
+  filter: brightness(0) invert(1);
+  opacity: .85;
+}
+
+/* ============================================================
+   HIDDEN PANEL DATA (text lives in HTML, JS reads it)
+   ============================================================ */
+.cl-panel-data { display: none; }
+
+/* ── PAGE CHEVRONS (outside infographic scale) ── */
+.opacity-0 { opacity: 0; pointer-events: none; }
+.opacity-1 { opacity: 1; pointer-events: auto; }
+.reader-view-page-chevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.reader-view-page-chevron:not(.reader-view-right-chevron) { left: 10px; }
+.reader-view-right-chevron { right: 10px; }
+.reader-view-page-chevron .pointer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,.82);
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,.22);
+  transition: background .15s, transform .12s;
+}
+.reader-view-page-chevron .pointer:hover { background: #fff; transform: scale(1.1); }
+.reader-view-page-chevron svg { width: 28px; height: 28px; fill: #7B1D2E; }
+
+</style>
+</head>
+<body style="background:#f0ebe5; padding: 1.25rem;">
+
+<!-- ============================================================
+     OUTER WRAPPER (scales to 16:9)
+     ============================================================ -->
+<div id="cl-wrapper">
+<div id="cl-infographic">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 1 – COVER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide active" id="slide-1">
+  <div class="cl-cover-top">
+    <div class="cl-cover-heading">Q1 2026<br><span class="light-red">RESULTS</span></div>
+    <div class="cl-logo-wrap">
+      <img src="Q1 2026 Results_files/Canada_Life_logo.svg" alt="Canada Life">
+    </div>
+  </div>
+  <div class="cl-cover-divider"></div>
+  <div class="cl-cover-bottom">
+    <p class="cl-cover-tagline">Q1 IS IN, AND IT'S THANKS TO YOU!</p>
+    <div class="cl-section-nav">
+      <div class="cl-section-item" data-go="2">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_6.svg" alt="Financial Goals"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_6.svg" alt=""></div>
+        <div class="cl-section-label">Hitting Our<br>Financial Goals</div>
+      </div>
+      <div class="cl-section-item" data-go="4">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_1.svg" alt="Customer First"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_1.svg" alt=""></div>
+        <div class="cl-section-label">Customer<br>First, Always</div>
+      </div>
+      <div class="cl-section-item" data-go="5">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_2.svg" alt="Sustainable Growth"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_2.svg" alt=""></div>
+        <div class="cl-section-label">Sustainable<br>Growth</div>
+      </div>
+      <div class="cl-section-item" data-go="6">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_3.svg" alt="Operational Excellence"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_3.svg" alt=""></div>
+        <div class="cl-section-label">Operational<br>Excellence &amp;<br>Efficiency</div>
+      </div>
+      <div class="cl-section-item" data-go="7">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_4.svg" alt="Digital Future"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_4.svg" alt=""></div>
+        <div class="cl-section-label">Digital Driven<br>Future,<br>AI &amp; Data</div>
+      </div>
+      <div class="cl-section-item" data-go="8">
+        <div class="cl-section-icon"><img src="Q1 2026 Results_files/Icon_5.svg" alt="Talent"></div>
+        <div class="cl-section-arrow"><img src="Q1 2026 Results_files/Arrow_5.svg" alt=""></div>
+        <div class="cl-section-label">Talent,<br>Development<br>&amp; Succession</div>
+      </div>
+    </div>
+    <div class="cl-cover-footer">
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 2 – HITTING OUR FINANCIAL GOALS
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-2">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="1"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="3"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title light-red">Hitting Our<br>Financial Goals</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="fin-sales">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£1.2bn</div><span class="cl-item-label">Sales</span><span class="cl-item-sub">Down vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="fin-earnings">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£69.7m</div><span class="cl-item-label">Base Earnings</span><span class="cl-item-sub">Up vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="fin-nbp">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><span class="cl-item-label">New Business<br>Profitability</span></div>
+        </div>
+        <div class="cl-item" data-item="fin-expenses">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><span class="cl-item-label">Expenses</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_6.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-2-inner"></div></div>
+      <div class="cl-item cl-item-link" data-go="3">
+        <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+        <div class="cl-item-text"><span class="cl-item-label">Click here to see our Business Highlights</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Panel content in HTML for accessibility & SEO -->
+  <div class="cl-panel-data" data-panel="fin-sales">
+    <p class="cl-panel-text">Strong Q1 performance for <strong>Individual Annuities</strong> and <strong>International Wealth</strong>, partially offset by lower sales in Bulk Annuities, Home Finance and Group Protection. Q1 2025 was boosted by the record quarter we saw in International Wealth.</p>
+    <p class="cl-panel-footnote">Sales exclude Canada Life Asset Management.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="fin-earnings">
+    <p class="cl-panel-text">Base earnings are higher year-on-year compared to Q1 2025 (<strong>+£4.2m</strong>), primarily driven by stronger trading activity and higher insurance earnings through growth in the underlying business.</p>
+    <p class="cl-panel-footnote">This is an unaudited non-GAAP financial measure.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="fin-nbp">
+    <p class="cl-panel-text">New Business profitability across all business lines continues to be <strong>close to our expectations</strong>, showing we are maintaining strong discipline on the quality and profitability of the business we write. Bulk Annuities and Wealth Management profitability have been <strong>ahead of our targets</strong> in a competitive market.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="fin-expenses">
+    <p class="cl-panel-text">Q1 2026 costs are <strong>broadly in-line year-on-year</strong>. Full year expenses continue to be well managed.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 3 – OUR BUSINESS HIGHLIGHTS
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-3">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="2"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="4"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title light-red">Our Business<br>Highlights</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="biz-ia">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£329m</div><span class="cl-item-label">Individual Annuities</span><span class="cl-item-sub">+50% vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="biz-hf">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£60m</div><span class="cl-item-label">Home Finance</span><span class="cl-item-sub">-28% vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="biz-ba">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£91m</div><span class="cl-item-label">Bulk Annuities</span><span class="cl-item-sub">-18% vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="biz-wealth">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£690m</div><span class="cl-item-label">Wealth</span><span class="cl-item-sub">-27% vs Q1 2025</span></div>
+        </div>
+        <div class="cl-item" data-item="biz-gp">
+          <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+          <div class="cl-item-text"><div class="cl-item-metric">£10m</div><span class="cl-item-label">Group Protection</span><span class="cl-item-sub">-30% vs Q1 2025</span></div>
+        </div>
+                    <div class="cl-item cl-item-link" data-go="4">
+        <div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div>
+        <div class="cl-item-text"><span class="cl-item-label">Click here to see how we're delivering against our Strategic Pillars</span></div>
+      </div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_6.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-3-inner"></div></div>
+
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="biz-ia">
+    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <p class="cl-panel-text">Strong case flow and positive momentum continued from Q4 2025. A strong January reflected focused action to recover the new business servicing position, resulting in pipeline being cleared and <strong>strengthening issued business</strong>.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="biz-hf">
+    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <p class="cl-panel-text">Slower completions in January reflecting lower application volumes in Q4 2025, however volumes improved following rate changes. Sales are expected to increase in Q2, supported by <strong>further rate changes and the launch of Advantage</strong>.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="biz-ba">
+    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <p class="cl-panel-text">Although volumes were broadly consistent with Q1 2025, deal timing is volatile and the whole market reflected a slower start to the year. There is currently a <strong>healthy pipeline for higher Q2 and Q3 volumes</strong>.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="biz-wealth">
+    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <p class="cl-panel-text">Strong performance highlights continued demand for our international products, although not at the record levels seen in Q1 2025. A <strong>strong pipeline is in place heading into Q2</strong>.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="biz-gp">
+    <img class="right-icon" src="Q1 2026 Results_files/Colour_icon_6.svg" alt="">
+    <p class="cl-panel-text">The low new business volumes written in January have been partially offset by above plan results in February and March. <strong>Increased quote activity in Q1 has led to a strong sales pipeline for Q2</strong>.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 4 – CUSTOMER FIRST, ALWAYS
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-4">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="3"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="5"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title" style="color:var(--cl-teal)">Customer<br>First, Always</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="cust-nps"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">NPS Scores</span></div></div>
+        <div class="cl-item" data-item="cust-tp"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Trust Pilot</span></div></div>
+        <div class="cl-item" data-item="cust-cdi"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Consumer Duty Index</span></div></div>
+        <div class="cl-item" data-item="cust-ir"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Industry Recognition</span></div></div>
+        <div class="cl-item" data-item="cust-wc"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">WeCare Launch</span></div></div>
+        <div class="cl-item" data-item="cust-ce"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Customer Enhancements</span></div></div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_1.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-4-inner"></div></div>
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-nps">
+    <div class="cl-panel-metric">+50 <span style="font-size:18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--cl-muted)">NPS</span></div>
+    <p class="cl-panel-text">Strong customer advocacy with NPS of <strong>+50</strong> across Retirement and Group Protection (as at 1 May 2026).</p>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-tp">
+    <div class="cl-stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="#7B1D2E" stroke="#7B1D2E" stroke-width="1.2"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17l-5.8 2.6 1.1-6.4L2.7 8.7l6.4-.9z" fill="none" stroke="#7B1D2E" stroke-width="1.2"/></svg></div>
+    <p class="cl-panel-text">Trusted by customers, maintaining a <strong>4.2 Trustpilot rating</strong> (as at 31 March 2026).</p>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-cdi">
+    <p class="cl-panel-text">CLUK ranked <strong>16th out of 45</strong> in the latest <strong>Consumer Duty Index</strong>, an improvement of <strong>11 places</strong> and increasing our score by <strong>+4</strong>.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-ir">
+    <p class="cl-panel-text">Named <strong>Best Lifetime Mortgage Provider</strong> at the British Later Life Lending Awards 2026 and awarded <strong>5-star Defaqto rating</strong> for our international bond account.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-wc">
+    <p class="cl-panel-text">Launched <strong>WeCare</strong> to provide holistic support for our BPA policyholders.</p>
+  </div>
+  <div class="cl-panel-data" data-panel="cust-ce">
+    <p class="cl-panel-text">Customer first enhancements including <strong>integrated bank validation</strong> for annuity and FTIP applications, automated payment safeguards where customers may be deceased, and enhanced product flexibility at set up for Discounted Gift Trust deeds.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 5 – SUSTAINABLE GROWTH
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-5">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="4"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="6"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title" style="color:var(--cl-purple)">Sustainable<br>Growth</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="sg-buyout"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Buy-Out</span></div></div>
+        <div class="cl-item" data-item="sg-advantage"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Advantage Launch</span></div></div>
+        <div class="cl-item" data-item="sg-reinsurance"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Reinsurance Partner</span></div></div>
+        <div class="cl-item" data-item="sg-bpa"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">BPA Acceleration</span></div></div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_2.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-5-inner"></div></div>
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="sg-buyout"><p class="cl-panel-text"><strong>Completed buy-out of 1 scheme</strong>, securing future benefits for members and progressing onboarding of other buy-out schemes.</p></div>
+  <div class="cl-panel-data" data-panel="sg-advantage"><p class="cl-panel-text"><strong>Advantage launch</strong> – introduced a new lifetime mortgage option offering greater flexibility, clarity and control for customers.</p></div>
+  <div class="cl-panel-data" data-panel="sg-reinsurance"><p class="cl-panel-text"><strong>Reinsured longevity risk</strong> with a new reinsurance partner. Expanding our panel of reinsurers to support the capital and risk management of a growing book of BPA business.</p></div>
+  <div class="cl-panel-data" data-panel="sg-bpa"><p class="cl-panel-text"><strong>BPA Acceleration team</strong> has successfully delivered phase one of planned upgrades to our <strong>BPA web pages</strong>.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 6 – OPERATIONAL EXCELLENCE AND EFFICIENCY
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-6">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="5"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="7"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title" style="color:var(--cl-olive)">Operational Excellence<br>and Efficiency</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="oe-hk"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Hong Kong Portfolio</span></div></div>
+        <div class="cl-item" data-item="oe-sys"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">System Changes</span></div></div>
+        <div class="cl-item" data-item="oe-act"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div><div class="cl-item-text"><span class="cl-item-label">Actuarial Model</span></div></div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Icon_3.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-6-inner"></div></div>
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="oe-hk"><p class="cl-panel-text">Completed the transfer of a <strong>c.220 policy Hong Kong portfolio</strong>, removing ongoing regulatory and operational complexity.</p></div>
+  <div class="cl-panel-data" data-panel="oe-sys"><p class="cl-panel-text"><strong>Implemented system changes</strong> and updated legal entity address on all customer documents to support change of registered address.</p></div>
+  <div class="cl-panel-data" data-panel="oe-act"><p class="cl-panel-text">Deployed a new <strong>Actuarial ER Model</strong> that can simulate upwards of <strong>10,000 economic scenarios</strong> over 100 years.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 7 – DIGITAL DRIVEN FUTURE
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-7">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="6"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="8"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title" style="color:var(--cl-blue)">Digital Driven Future,<br>Leveraging AI and Data</h2>
+      <div class="cl-items-grid">
+        <div class="cl-item" data-item="dig-online">
+          <div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div>
+          <div class="cl-item-text"><span class="cl-item-label">Online Applications</span></div>
+        </div>
+        <div class="cl-item" data-item="dig-legacy">
+          <div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div>
+          <div class="cl-item-text"><span class="cl-item-label">Legacy Technology</span></div>
+        </div>
+        <div class="cl-item" data-item="dig-data">
+          <div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div>
+          <div class="cl-item-text"><span class="cl-item-label">Data Clean Up</span></div>
+        </div>
+        <div class="cl-item" data-item="dig-ai">
+          <div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div>
+          <div class="cl-item-text"><span class="cl-item-label">Embedded AI</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_4.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-7-inner"></div></div>
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="dig-online"><p class="cl-panel-text">Launched new online application journeys for <strong>Premiere</strong> and <strong>Premiere Europe</strong> accounts, reducing cycle times by an average <strong>50%</strong>.</p></div>
+  <div class="cl-panel-data" data-panel="dig-legacy"><p class="cl-panel-text"><strong>Decommissioned DB2 legacy technology</strong> and Java apps on Adviser Connect, improving performance and customer experience.</p></div>
+  <div class="cl-panel-data" data-panel="dig-data"><p class="cl-panel-text">Completed the <strong>unstructured data clean-up project</strong>, delivering improved data quality and readiness.</p></div>
+  <div class="cl-panel-data" data-panel="dig-ai"><p class="cl-panel-text"><strong>Embedded AI at scale</strong>, with 800+ colleagues now using <strong>AI4All</strong> and more to come in Q2.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 8 – TALENT, DEVELOPMENT AND SUCCESSION
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-8">
+  <div class="cl-nav-bar">
+    <span class="cl-nav-breadcrumb">Q1 2026 Results</span>
+    <div class="cl-nav-hint"><img src="Q1 2026 Results_files/Hover.svg" alt="">Hover over icons to reveal content</div>
+    <div class="cl-nav-controls">
+      <button class="cl-nav-btn" data-go="1"><img src="Q1 2026 Results_files/Home.svg" alt="Home"></button>
+      <button class="cl-nav-btn back" data-go="7"><img src="Q1 2026 Results_files/Forward.svg" alt="Previous"></button>
+      <button class="cl-nav-btn" data-go="9"><img src="Q1 2026 Results_files/Forward.svg" alt="Next"></button>
+    </div>
+  </div>
+  <div class="cl-slide-body">
+    <div class="cl-slide-left">
+      <h2 class="cl-slide-title" style="color:var(--cl-gold)">Talent, Development<br>and Succession</h2>
+      <div class="cl-items-grid cols-3" style="gap:2px 12px;">
+        <div class="cl-item" data-item="tal-dev"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Development Programmes</span></div></div>
+        <div class="cl-item" data-item="tal-being"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Being There</span></div></div>
+        <div class="cl-item" data-item="tal-wb"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Wellbeing Support</span></div></div>
+        <div class="cl-item" data-item="tal-perf"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Redesigned Performance</span></div></div>
+        <div class="cl-item" data-item="tal-dei"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Advanced DE&amp;I</span></div></div>
+        <div class="cl-item" data-item="tal-fin"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Financial Support</span></div></div>
+        <div class="cl-item" data-item="tal-vol"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Colleague Volunteering</span></div></div>
+        <div class="cl-item" data-item="tal-vs"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Value Streams</span></div></div>
+        <div class="cl-item" data-item="tal-award"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Shortlisted for Award</span></div></div>
+        <div class="cl-item" data-item="tal-clar"><div class="cl-item-illus"><div class="cl-item-btn"><img src="Q1 2026 Results_files/Hover.svg" class="btn-hover" alt=""><img src="Q1 2026 Results_files/Click.svg" class="btn-click" alt=""></div></div><div class="cl-item-text"><span class="cl-item-label">Clarendon Works</span></div></div>
+      </div>
+    </div>
+    <div class="cl-slide-right">
+      <div class="cl-corner-icon"><img src="Q1 2026 Results_files/Colour_icon_5.svg" alt=""></div>
+      <div class="cl-panel-card"><div class="cl-panel-inner" id="panel-8-inner"></div></div>
+    </div>
+  </div>
+  <div class="cl-panel-data" data-panel="tal-dev"><img class="right-icon" src="Q1 2026 Results_files/Development.svg" alt=""><p class="cl-panel-text">Welcomed <strong>20 colleagues onto Ignite</strong> and <strong>5 UK colleagues onto Nexus</strong>, supporting the development of our future leaders.</p></div>
+  <div class="cl-panel-data" data-panel="tal-being"><img class="right-icon" src="Q1 2026 Results_files/Being_there.svg" alt=""><p class="cl-panel-text">Strengthened care support with new <strong>'Being There' leave</strong> and up to five days emergency Back Up care with Bright Horizons.</p></div>
+  <div class="cl-panel-data" data-panel="tal-wb"><img class="right-icon" src="Q1 2026 Results_files/Wellbeing.svg" alt=""><p class="cl-panel-text">Enhanced wellbeing support through <strong>Bupa</strong> and the <strong>Peppy app</strong>, providing free, confidential, expert medical help, including menopause and fertility guidance.</p></div>
+  <div class="cl-panel-data" data-panel="tal-perf"><img class="right-icon" src="Q1 2026 Results_files/Redesign.svg" alt=""><p class="cl-panel-text">Redesigned performance approach, <strong>saving 150 days of people leader system time</strong> to reinvest in better performance conversations and objective setting.</p></div>
+  <div class="cl-panel-data" data-panel="tal-dei"><img class="right-icon" src="Q1 2026 Results_files/DEI.svg" alt=""><p class="cl-panel-text"><strong>Advanced DE&amp;I</strong>, launching the Ability Network to champion visible and hidden disabilities and celebrated International Women's Day with a clothing drive from SmartWorks.</p></div>
+  <div class="cl-panel-data" data-panel="tal-fin"><img class="right-icon" src="Q1 2026 Results_files/Financial_support.svg" alt=""><p class="cl-panel-text">Launched our wellbeing programme delivering financial support through <strong>Better with Money 1:1 coaching</strong>, a Family Finances webinar and a Money Confidence Learning Bite.</p></div>
+  <div class="cl-panel-data" data-panel="tal-vol"><img class="right-icon" src="Q1 2026 Results_files/Volunteer.svg" alt=""><p class="cl-panel-text">Colleagues completed <strong>91 volunteering hours</strong>, sharing their time and talents to support causes close to their hearts.</p></div>
+  <div class="cl-panel-data" data-panel="tal-vs"><img class="right-icon" src="Q1 2026 Results_files/Value_stream.svg" alt=""><p class="cl-panel-text">Established our <strong>first two value streams</strong> (Protection and Finance), with leadership in place, initial funding secured and core governance forums set up.</p></div>
+  <div class="cl-panel-data" data-panel="tal-award"><img class="right-icon" src="Q1 2026 Results_files/Shortlisted.svg" alt=""><p class="cl-panel-text">Shortlisted for <strong>'Best Supplier to Work For'</strong> at the 2026 Employee Benefits Awards.</p></div>
+  <div class="cl-panel-data" data-panel="tal-clar"><img class="right-icon" src="Q1 2026 Results_files/Clarendon.svg" alt=""><p class="cl-panel-text"><strong>Closed Maple House</strong> and made good progress with Watford fit out, reusing existing furniture and technology to reduce waste and environmental impact.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 9 – CLOSING
+     ══════════════════════════════════════════════════════════════ -->
+<div class="cl-slide" id="slide-9">
+  <div class="cl-closing">
+    <div>
+      <div class="cl-closing-heading">A Strong<br>Start to 2026</div>
+      <div class="cl-closing-divider"></div>
+      <p class="cl-closing-tagline">Thank you for the incredible<br>work behind every result.</p>
+    </div>
+    <div class="cl-closing-right">
+      <img src="Q1 2026 Results_files/Canada_Life_logo.svg" class="cl-logo" alt="Canada Life">
+      <button class="cl-nav-btn" data-go="1" style="background:rgba(255,255,255,.18);border-radius:50%;padding:4px;">
+        <img src="Q1 2026 Results_files/Home.svg" alt="Home" style="filter:brightness(0) invert(1);opacity:.9;">
+      </button>
+    </div>
+  </div>
+</div>
+
+
+</div><!-- end #cl-infographic -->
+
+<div class="opacity-0 reader-view-page-chevron" id="cl-chevron-left"><div class="pointer"><svg viewBox="0 0 36 36" focusable="false" aria-label="previous page" role="img"><path fill-rule="evenodd" d="M12,18v0a1.988,1.988,0,0,0,.585,1.409l7.983,7.98a2,2,0,1,0,2.871-2.772l-.049-.049L16.819,18l6.572-6.57a2,2,0,0,0-2.773-2.87l-.049.049-7.983,7.98A1.988,1.988,0,0,0,12,18Z"></path></svg></div></div>
+<div class="opacity-1 reader-view-right-chevron reader-view-page-chevron" id="cl-chevron-right"><div class="pointer"><svg viewBox="0 0 36 36" focusable="false" aria-label="next page" role="img"><path fill-rule="evenodd" d="M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2,2,0,1,1-2.871-2.772l.049-.049L19.181,18l-6.572-6.57a2,2,0,0,1,2.773-2.87l.049.049,7.983,7.98A1.988,1.988,0,0,1,24,18Z"></path></svg></div></div>
+
+</div><!-- end #cl-wrapper -->
+
+
+<script>
+(function () {
+
+  /* ── SCALE TO 16:9 ── */
+  const wrapper = document.getElementById('cl-wrapper');
+  const infographic = document.getElementById('cl-infographic');
+
+  function scale() {
+    const s = wrapper.offsetWidth / 1280;
+    infographic.style.transform = 'scale(' + s + ')';
+    wrapper.style.height = (infographic.offsetHeight * s) + 'px';
+  }
+  window.addEventListener('resize', scale);
+  scale();
+
+  /* ── NAVIGATION ── */
+  let current = 1;
+
+  function goTo(n) {
+    if (n < 1 || n > 9) return;
+    const from = document.getElementById('slide-' + current);
+    const to   = document.getElementById('slide-' + n);
+    if (from) from.classList.remove('active');
+    if (to) {
+      to.classList.remove('active');
+      void to.offsetWidth; // force reflow → replay animations
+      to.classList.add('active');
+      to.querySelectorAll('.cl-item.active').forEach(el => el.classList.remove('active'));
+      const inner = to.querySelector('.cl-panel-inner');
+      if (inner) { inner.innerHTML = ''; inner.classList.remove('visible'); }
+      const firstItem = to.querySelector('[data-item]');
+      if (firstItem) requestAnimationFrame(() => activateItem(firstItem));
+    }
+    current = n;
+    scale();
+    updateChevrons();
+    wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── PANEL REVEAL ── */
+  function activateItem(itemEl) {
+    const slide = itemEl.closest('.cl-slide');
+    if (!slide) return;
+    const key = itemEl.getAttribute('data-item');
+    if (!key) return;
+
+    // Find panel content in HTML
+    const dataEl = slide.querySelector('[data-panel="' + key + '"]');
+    if (!dataEl) return;
+
+    // Find the panel inner for this slide
+    const inner = slide.querySelector('.cl-panel-inner');
+    if (!inner) return;
+
+    // Mark active item
+    slide.querySelectorAll('.cl-item').forEach(el => el.classList.remove('active'));
+    itemEl.classList.add('active');
+
+    // Animate panel content in
+    inner.classList.remove('visible');
+    void inner.offsetWidth;
+    inner.innerHTML = dataEl.innerHTML;
+    requestAnimationFrame(() => inner.classList.add('visible'));
+  }
+
+  /* ── EVENT DELEGATION ── */
+  infographic.addEventListener('click', function (e) {
+    const goEl   = e.target.closest('[data-go]');
+    const itemEl = e.target.closest('[data-item]');
+    if (goEl)        goTo(parseInt(goEl.getAttribute('data-go'), 10));
+    else if (itemEl) activateItem(itemEl);
+  });
+
+  // Hover reveals panel on content slides
+  infographic.addEventListener('mouseenter', function (e) {
+    const itemEl = e.target.closest('[data-item]');
+    if (itemEl) activateItem(itemEl);
+  }, true);
+
+  /* ── KEYBOARD ── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(current + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(current - 1);
+  });
+
+  /* ── PAGE CHEVRONS ── */
+  const chevLeft  = document.getElementById('cl-chevron-left');
+  const chevRight = document.getElementById('cl-chevron-right');
+
+  function updateChevrons() {
+    chevLeft.className  = current > 1
+      ? 'opacity-1 reader-view-page-chevron'
+      : 'opacity-0 reader-view-page-chevron';
+    chevRight.className = current < 9
+      ? 'opacity-1 reader-view-right-chevron reader-view-page-chevron'
+      : 'opacity-0 reader-view-right-chevron reader-view-page-chevron';
+  }
+
+  chevLeft.addEventListener('click',  function () { goTo(current - 1); });
+  chevRight.addEventListener('click', function () { goTo(current + 1); });
+  updateChevrons();
+
+})();
+</script>
+
+</body>
+</html>
